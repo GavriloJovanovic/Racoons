@@ -176,3 +176,18 @@ void binning_boundry(table &data,std::string attribute,int sets) {
         }  
     }
 }
+
+void aproximation_val(table &data,std::string attribute,double value) {
+    std::for_each(data[attribute].begin(),data[attribute].end(),[value](auto &x) {
+        if(x == entry("n/a"))
+            x = entry(value);
+    });
+}
+
+void aproximation_mean(table &data,std::string attribute) {
+    double value = column_mean2(data[attribute]);
+    std::for_each(data[attribute].begin(),data[attribute].end(),[value](auto &x) {
+        if(x == entry("n/a"))
+            x = entry(value);
+    });
+} 

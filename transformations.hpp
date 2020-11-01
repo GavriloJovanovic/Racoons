@@ -3,7 +3,7 @@
 #include<random>
 #include<set>
 
-#include "table.hpp"
+#include "stats.hpp"
 
 
 void normalize(table &data,std::string att);
@@ -17,4 +17,6 @@ void binning_frequency(table &data,std::string attribute,int sets);
 void binning_mean(table &data,std::string attribute,int sets);
 void binning_boundry(table &data,std::string attribute,int sets);
 // aproksimacija n/a vrednosti,stavljenje 0, medijane itd.
+void aproximation_val(table &data,std::string attribute,double value);
+void aproximation_mean(table &data,std::string attribute);
 #endif // TRANSFORMATIONS_HPP
