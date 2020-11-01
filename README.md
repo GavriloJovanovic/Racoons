@@ -1,2 +1,2 @@
 # Racoons
-Simulation of tool for data mining
+Tool for data mining enthusiast.
