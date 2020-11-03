@@ -3,6 +3,7 @@
 
 #include <QMainWindow>
 #include "node.hpp"
+#include <vector>
 QT_BEGIN_NAMESPACE
 namespace Ui { class MainWindow; }
 QT_END_NAMESPACE

@@ -13,11 +13,14 @@ node::node(int width, int height) : QWidget()
     int h = (height-20)/2;
     input = QPoint(-5,h);
     output = QPoint(width+5, h);
-    inputCircle = new QGraphicsEllipseItem(input.x(), input.y(), 5, 5);
-    outputCircle = new QGraphicsEllipseItem(output.x(), output.y(), 5, 5);
+    inputCircle = new QGraphicsEllipseItem(input.x(), -5, 10, 10);
+    outputCircle = new QGraphicsEllipseItem(output.x(), -5, 10, 10);
+
 
     globalScene->addItem(inputCircle);
     globalScene->addItem(outputCircle);
+    inputCircle->setPos(QPoint(geometry().x() - 5, geometry().y() + (geometry().height()/2)));
+    outputCircle->setPos(QPoint(geometry().topLeft().x() - 5,  geometry().y() + (geometry().height()/2)));
 
 }
 
@@ -38,13 +41,13 @@ void node::mouseMoveEvent(QMouseEvent *event)
         return;
     if((event->pos() - dragStart).manhattanLength() < QApplication::startDragDistance())
         return;
-    if(header->geometry().contains(event->pos())) {
+    //if(header->geometry().contains(event->pos())) {
         QPoint temp = geometry().topLeft() + event->pos() - dragStart;
         setGeometry(QRect(temp, rect().size()));
-        input = QPoint(temp.x() - 5, (temp.y() - 20)/2);
-        output = QPoint(temp.x() + 5 + rect().size().width(), (temp.y() - 20)/2);
+        input = QPoint(temp.x() - 5, geometry().y() + (geometry().height()/2));
+        output = QPoint(geometry().topLeft().x() - 5,  geometry().y() + (geometry().height()/2));
         inputCircle->setPos(input);
         outputCircle->setPos(output);
-    }
+    //}
 }
 

@@ -2,6 +2,9 @@
 #include "ui_mainwindow.h"
 #include <QGraphicsProxyWidget>
 
+std::vector<node*> gNodes;
+
+
 QGraphicsScene *globalScene;
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent)

@@ -31,7 +31,6 @@ protected:
     QGraphicsEllipseItem * inputCircle;
     QGraphicsEllipseItem * outputCircle;
 
-
 };
 
 #endif // NODE_HPP

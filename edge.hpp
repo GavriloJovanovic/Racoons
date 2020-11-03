@@ -5,7 +5,7 @@
 class edge
 {
 public:
-    edge();
+    edge(node *n1, node *n2);
 };
 
 #endif // EDGE_HPP
