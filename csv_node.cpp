@@ -2,6 +2,7 @@
 #include <QFileDialog>
 #include <QDialog>
 #include <QHBoxLayout>
+#include "transformations.hpp"
 
 csv_node::csv_node(int width, int height) : node(width,height){
     headerText->setText("CSV NODE");
@@ -35,6 +36,7 @@ void csv_node::load() {
 }
 
 void csv_node::preview() {
+
     QDialog tablePreview;
     tablePreview.setModal(true);
     QHBoxLayout hBox;

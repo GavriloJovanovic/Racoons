@@ -10,6 +10,7 @@
 #include <QGraphicsScene>
 #include<QLabel>
 #include<QObject>
+#include "table.hpp"
 
 extern QGraphicsScene *globalScene;
 
@@ -39,9 +40,11 @@ public:
     virtual void dragEnterEvent(QDragEnterEvent *event);
     virtual void mousePressEvent(QMouseEvent *event);
     virtual void mouseMoveEvent(QMouseEvent *event);
+    virtual void mouseDoubleClickEvent(QMouseEvent *event);
     QPoint dragStart;
     virtual void run();
 protected:
+    table t;
     std::string name;
     QFrame *header;
     QFrame *body;
@@ -51,6 +54,8 @@ protected:
     QGraphicsEllipseItem * outputCircle;
     bool dragged;
     std::vector<edge *> inputs;
+    int inputMax;
+    int outputMax;
     std::vector<edge *> outputs;
     friend class edge;
     QLabel *headerText;

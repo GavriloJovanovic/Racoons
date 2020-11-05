@@ -11,7 +11,6 @@ class csv_node : public node
 {
     Q_OBJECT
 private:
-    table t;
     QLineEdit edit;
     QPushButton browseBtn;
     QPushButton loadBtn;

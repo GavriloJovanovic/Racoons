@@ -1,5 +1,7 @@
 #include "node.hpp"
 
+extern node * fstSelected, *sndSelected;
+
 edge::edge(node *n1,node *n2) {
     inputNode = n2;
     outputNode = n1;
@@ -79,6 +81,19 @@ void node::mouseMoveEvent(QMouseEvent *event)
         }
         for(int i = 0; i < inputs.size();i++) {
             inputs[i]->updateEnd(input);
+        }
+    }
+}
+
+void node::mouseDoubleClickEvent(QMouseEvent *event) {
+    if(event->button() == Qt::LeftButton) {
+        if(fstSelected == nullptr) {
+            fstSelected = this;
+            setStyleSheet("QWidget{border: 2px dotted green}");
+        }
+        else if(sndSelected == nullptr && fstSelected != this) {
+            sndSelected = this;
+            setStyleSheet("QWidget{border: 2px dotted red}");
         }
     }
 }

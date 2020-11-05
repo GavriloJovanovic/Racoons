@@ -9,24 +9,26 @@ CONFIG += c++17
 #DEFINES += QT_DISABLE_DEPRECATED_BEFORE=0x060000    # disables all the APIs deprecated before Qt 6.0.0
 
 SOURCES += \
-    edge.cpp \
+    csv_node.cpp \
     entry.cpp \
     file_reader.cpp \
     knn.cpp \
     main.cpp \
     mainwindow.cpp \
     node.cpp \
+    partition_node.cpp \
     stats.cpp \
     table.cpp \
     transformations.cpp
 
 HEADERS += \
-    edge.hpp \
+    csv_node.hpp \
     entry.hpp \
     file_reader.hpp \
     knn.hpp \
     mainwindow.h \
     node.hpp \
+    partition_node.hpp \
     stats.hpp \
     table.hpp \
     transformations.hpp
@@ -42,8 +44,15 @@ else: unix:!android: target.path = /opt/$${TARGET}/bin
 DISTFILES += \
     README.md \
     Rakun_gki.pro.user \
+    csv_icon.png \
     iris.csv \
+    iris.csv.csv \
     test.csv
 
 RESOURCES += \
+    resources.qrc \
     resources.qrc
+
+SUBDIRS += \
+    Rakuncina.pro \
+    Rakunko.pro

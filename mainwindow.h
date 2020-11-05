@@ -15,8 +15,10 @@ class MainWindow : public QMainWindow
 public:
     MainWindow(QWidget *parent = nullptr);
     ~MainWindow();
+    virtual void keyPressEvent(QKeyEvent *event);
 
 private:
     Ui::MainWindow *ui;
+    std::vector<edge*> activeEdges;
 };
 #endif // MAINWINDOW_H
