@@ -401,10 +401,16 @@ table table::operator[](const std::vector<int>& rows_indexes){
 //   table assignment operators
 
 table& table::operator=(const table& rhs){
-    cols=rhs.cols;
-    rows=rhs.rows;
-    c_n=rhs.c_n;
-    r_n=rhs.r_n;
+    c_n=0;
+    r_n=0;
+    rows.clear();
+    cols.clear();
+    auto curr=rhs.col_names();
+    push(curr);
+    for(int i=0;i<rhs.r_n;i++){
+        push_row(rhs[i].get_row());
+        rows[i].name=rhs[i].name;
+    }
     return *this;
 }
 
@@ -501,8 +507,6 @@ void table::push(const std::string& name){
     if(r_n > 0) {
         cols[name].entries.resize(r_n, entry("n/a"));
     }
-    for(auto& x:rows)
-        x.t_ref=*this;
     c_n++;
 }
 
