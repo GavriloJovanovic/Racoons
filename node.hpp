@@ -21,6 +21,7 @@ public:
     edge(node *n1,node *n2);
     void updateBegin(QPoint q);
     void updateEnd(QPoint q);
+    void pass(const table & t);
 private:
     node *outputNode;
     node *inputNode;
@@ -35,28 +36,29 @@ class node : public QWidget
 {
 
 public:
-    node(int width, int height);
+    node(int width, int height, int inputSize = 1);
     void setName(std::string name);
     virtual void dragEnterEvent(QDragEnterEvent *event);
     virtual void mousePressEvent(QMouseEvent *event);
     virtual void mouseMoveEvent(QMouseEvent *event);
     virtual void mouseDoubleClickEvent(QMouseEvent *event);
     QPoint dragStart;
+    QPoint findPoint(int idx);
+    QPoint findPointOutput(int idx);
+    int firstFree();
     virtual void run();
 protected:
+    bool needsUpdate;
     table t;
     std::string name;
     QFrame *header;
     QFrame *body;
-    QPoint input;
-    QPoint output;
-    QGraphicsEllipseItem * inputCircle;
-    QGraphicsEllipseItem * outputCircle;
+    std::vector<QGraphicsEllipseItem *> inputCircles;
+    std::vector<QGraphicsEllipseItem *> outputCircles;
     bool dragged;
     std::vector<edge *> inputs;
-    int inputMax;
-    int outputMax;
     std::vector<edge *> outputs;
+    std::vector<table> inputTables;
     friend class edge;
     QLabel *headerText;
 };

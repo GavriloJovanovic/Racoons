@@ -22,7 +22,7 @@ private:
 
 public:
     csv_node(int width, int height);
-    void run();
+    void run() override;
 public slots:
     void load();
     void browse();

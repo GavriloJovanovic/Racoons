@@ -4,7 +4,7 @@
 #include <QHBoxLayout>
 #include "transformations.hpp"
 
-csv_node::csv_node(int width, int height) : node(width,height){
+csv_node::csv_node(int width, int height) : node(width,height,0){
     headerText->setText("CSV NODE");
     edit.setParent(body);
     edit.setGeometry(geometry().x() + 10,geometry().y() + 10,150,30);
@@ -33,6 +33,7 @@ csv_node::csv_node(int width, int height) : node(width,height){
 void csv_node::load() {
     std::string path = edit.text().toStdString();
     t = loadFromFile(path);
+    needsUpdate = false;
 }
 
 void csv_node::preview() {
@@ -61,6 +62,10 @@ void csv_node::preview() {
     }
 
     tablePreview.exec();
+
+    for(auto &it : outputs) {
+        it->pass(t);
+    }
 }
 
 void csv_node::browse() {
@@ -69,8 +74,17 @@ void csv_node::browse() {
                                                     "",
                                                     tr("CSV files (*.csv)"));
     edit.setText(fileName);
+    needsUpdate = true;
 }
 
-void csv_node::run() {
-
+void csv_node::run()  {
+    if(needsUpdate)
+    {
+        std::string path = edit.text().toStdString();
+        t = loadFromFile(path);
+        needsUpdate = false;
+        for(auto &it : outputs) {
+            it->pass(t);
+        }
+    }
 }
