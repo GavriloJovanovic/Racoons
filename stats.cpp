@@ -12,6 +12,19 @@ double column_mean(const collumn &c) {
     return sum/(double)n;
 }
 
+double column_mean2(const collumn &c){
+    double sum = 0;
+    int n = std::count_if(c.begin(), c.end(),[](auto x) {
+        return x != entry("n/a");
+    });
+
+    sum = std::accumulate(c.begin(), c.end(), 0.0, [] (auto x, const auto &y) {
+        return x + y.get_double();
+    });
+
+    return sum/(double)n;
+}
+
 double column_stdev(const collumn &c) {
     double mean = column_mean(c);
     double sum = 0;

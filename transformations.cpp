@@ -185,10 +185,10 @@ void aproximation_val(table &data,std::string attribute,double value) {
 }
 
 void aproximation_mean(table &data,std::string attribute) {
-  /*  double value = column_mean2(data[attribute]);
+    double value = column_mean2(data[attribute]);
     std::for_each(data[attribute].begin(),data[attribute].end(),[value](auto &x) {
         if(x == entry("n/a"))
             x = entry(value);
-    });*/
+    });
 
 }

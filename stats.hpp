@@ -14,6 +14,8 @@ double column_covariance(const collumn &c1,  const collumn &c2);
 
 double column_correlation(const collumn &c1, const collumn &c2);
 
+double column_mean2(const collumn &c);
+
 //row
 double row_mean(const row &r);
 
