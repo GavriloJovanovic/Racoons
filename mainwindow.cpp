@@ -3,6 +3,11 @@
 #include <QGraphicsProxyWidget>
 #include "csv_node.hpp"
 #include "partition_node.hpp"
+#include "standardization_node.hpp"
+#include "normalization_node.hpp"
+#include "delete_na.hpp"
+#include "filter_node.hpp"
+#include "stats_node.hpp"
 std::vector<node*> gNodes;
 
 

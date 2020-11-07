@@ -10,26 +10,36 @@ CONFIG += c++17
 
 SOURCES += \
     csv_node.cpp \
+    delete_na.cpp \
     entry.cpp \
     file_reader.cpp \
+    filter_node.cpp \
     knn.cpp \
     main.cpp \
     mainwindow.cpp \
     node.cpp \
+    normalization_node.cpp \
     partition_node.cpp \
+    standardization_node.cpp \
     stats.cpp \
+    stats_node.cpp \
     table.cpp \
     transformations.cpp
 
 HEADERS += \
     csv_node.hpp \
+    delete_na.hpp \
     entry.hpp \
     file_reader.hpp \
+    filter_node.hpp \
     knn.hpp \
     mainwindow.h \
     node.hpp \
+    normalization_node.hpp \
     partition_node.hpp \
+    standardization_node.hpp \
     stats.hpp \
+    stats_node.hpp \
     table.hpp \
     transformations.hpp
 
